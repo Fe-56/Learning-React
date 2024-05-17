@@ -12,7 +12,7 @@ function Student(props) {
   );
 }
 
-// good for debugging, doesn't actually stop the code from running
+// good for debugging, since it gives a warning in the console, doesn't actually stop the code from running
 Student.PropType = {
   name: PropTypes.string,
   age: PropTypes.number,
