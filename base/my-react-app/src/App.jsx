@@ -5,6 +5,8 @@ import Card from './Card/Card.jsx';
 import Student from './Student.jsx';
 import UserGreeting from './UserGreeting.jsx';
 import List from './List.jsx';
+import Button from './Button.jsx';
+import ProfilePicture from './ProfilePicture.jsx';
 
 function App() {
   const fruits = [
@@ -25,6 +27,8 @@ function App() {
 
   return (
     <div>
+      <ProfilePicture />
+      <Button />
       <List items={fruits} category="Fruits" />
       <List items={vegetables} category="Vegetable" />
       <UserGreeting isLoggedIn={true} username="fe-56" />
