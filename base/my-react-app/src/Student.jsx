@@ -1,3 +1,5 @@
+// props
+
 import PropTypes from 'prop-types';
 
 function Student(props) {
