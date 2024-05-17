@@ -9,6 +9,7 @@ import Button from './Button.jsx';
 import ProfilePicture from './ProfilePicture.jsx';
 import MyComponent from './MyComponent.jsx';
 import Counter from './Counter.jsx';
+import Name from './Name.jsx';
 
 function App() {
   const fruits = [
@@ -29,6 +30,7 @@ function App() {
 
   return (
     <div>
+      <Name />
       <Counter />
       <MyComponent />
       <ProfilePicture />
