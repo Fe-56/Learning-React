@@ -1,0 +1,54 @@
+#todo-list {
+  text-align: center;
+  margin: 100px 0px 0px 0px;
+}
+
+#todo-list h1 {
+  font-size: 4rem;
+}
+
+#button-add {
+  background-color: greenyellow;
+  border-radius: 5px;
+  font-size: 1.7rem;
+  font-weight: bold;
+}
+
+#new-todo {
+  margin-bottom: 30px;
+}
+
+#todo-input {
+  font-size: 1.7rem;
+}
+
+.button-delete {
+  background-color: lightcoral;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.button-up {
+  background-color: lightblue;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.button-down {
+  background-color: lightblue;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.todo {
+  background-color: aqua;
+  margin: 10px 0px 0px 0px;
+  /* max-width: 40%; */
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
