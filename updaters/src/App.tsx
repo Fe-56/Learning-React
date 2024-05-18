@@ -5,8 +5,8 @@ import Food from "./Food";
 function App() {
   return (
     <div>
-      <Food />
       <Car />
+      <Food />
       <MyComponent />
     </div>
   );
