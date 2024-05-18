@@ -7,13 +7,13 @@ function Food() {
     "Banana"
   ]);
 
-  const addFood = (event): void => {
+  const addFood = (): void => {
     const newFood = document.getElementById("foodInput").value;
     document.getElementById("foodInput").value = "";
     setFoods(prevFoods => [...prevFoods, newFood]);
   }
 
-  const removeFood = (index): void => {
+  const removeFood = (index: number): void => {
     setFoods(foods.filter((_, i) => i != index));
   }
 
@@ -21,10 +21,10 @@ function Food() {
     <div className="foods">
       <h2>List of food:</h2>
       <ol>
-        {foods.map((food, index) => 
+        {foods.map((food: string, index: number) => 
           <li 
             key={index}
-            onClick={() => removeFood(index)}
+            onClick={(): void  => removeFood(index)}
           >
             {food}
           </li>
