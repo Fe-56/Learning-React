@@ -1,43 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 function Stopwatch() {
-  const [miliseconds, setMiliseconds] = useState(0);
-  const [seconds, setSeconds] = useState(0);
-  const [minutes, setMinutes] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [elapsedTime, setElapsedTime] = useState(0);
+  const startTimeRef = useRef(0);
+  const intervalId = useRef(0);
 
   useEffect(() => {
-    const milisecondsInterval = setInterval(handleMiliseconds, 1);
-    const secondsInterval = setInterval(handleSeconds, 1000);
-    const minutesInterval = setInterval(handleMinutes, 60 * 1000);
+    if (isRunning) {
+      intervalId.current = setInterval(() => {
+        setElapsedTime(Date.now() - startTimeRef.current);
+      }, 1);
+    }
 
     return () => {
-      clearInterval(milisecondsInterval);
-      clearInterval(secondsInterval);
-      clearInterval(minutesInterval);
+      clearInterval(intervalId.current);
     }
   }, [isRunning]);
 
-  const handleMiliseconds = () => {
-    if (isRunning) {
-      setMiliseconds(prevMiliseconds => (prevMiliseconds + 1) % 100);
-    }
-  }
-
-  const handleSeconds = () => {
-    if (isRunning) {
-      setSeconds(prevSeconds => (prevSeconds + 1) % 60);
-    }
-  }
-
-  const handleMinutes = () => {
-    if (isRunning) {
-      setMinutes(prevMinutes => prevMinutes + 1);
-    }
-  }
-
   const startStopwatch = () => {
     setIsRunning(true);
+    startTimeRef.current = Date.now() - elapsedTime;
   }
 
   const stopStopwatch = () => {
@@ -45,32 +28,50 @@ function Stopwatch() {
   }
 
   const resetStopwatch = () => {
-    setMiliseconds(0);
-    setSeconds(0);
-    setMinutes(0);
+    setElapsedTime(0);
+    setIsRunning(false);
   }
 
-  const stopwatch = () => {
-    return `${padNumber(minutes)}:${padNumber(seconds)}:${padNumber(miliseconds)}`;
+  const formatMinutes = () => {
+    const minutes = Math.floor(elapsedTime / (1000 * 60));
+    return padNumber(minutes);
+  }
+
+  const formatSeconds = () => {
+    const seconds = Math.floor(elapsedTime / 1000);
+    return padNumber(seconds);
+  }
+
+  const formatMiliseconds = () => {
+    const miliseconds = Math.floor(elapsedTime % 1000);
+    return padNumberMiliseconds(miliseconds);
   }
 
   const padNumber = (number) => {
     return number > 9 ? `${number}` : `0${number}`;
   }
 
+  const padNumberMiliseconds = (number) => {
+    return number > 99 ? 
+      `${number}`
+      : number > 9 ?
+        `0${number}`
+        : `00${number}`;
+  }
+
   return (
     <div id="stopwatch-container">
       <div id="stopwatch">
         <h1 className="stopwatch-timer" id="minutes">
-          {padNumber(minutes)}
+          {formatMinutes()}
         </h1>
         <h1>:</h1>
         <h1 className="stopwatch-timer" id="seconds">
-          {padNumber(seconds)}
+          {formatSeconds()}
         </h1>
         <h1>:</h1>
         <h1 className="stopwatch-timer" id="miliseconds">
-          {padNumber(miliseconds)}
+          {formatMiliseconds()}
         </h1>
       </div>
       <div id="buttons">
