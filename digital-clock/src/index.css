@@ -1,0 +1,26 @@
+.clock-container {
+  backdrop-filter: blur(6px);
+  border-radius: 25px;
+  padding: 20px 30px 20px 30px;
+}
+
+.clock {
+   font-size: 6rem;
+   font-weight: bold;
+   text-shadow: 3px 3px 3px #fd3d88;
+   text-align: center;
+   color: #fccba3;
+}
+
+body {
+  background-image: url(assets/car_outrun_road_mountain_retrowave.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 0px;
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+  align-items: center;
+}
