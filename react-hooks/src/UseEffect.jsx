@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 
-function MyComponent() {
+function UseEffect() {
   const [count, setCount] = useState(0);
   const [color, setColor] = useState('green');
   const [width, setWidth] = useState(window.innerWidth);
@@ -56,4 +56,4 @@ function MyComponent() {
   );
 }
 
-export default MyComponent;
+export default UseEffect;
